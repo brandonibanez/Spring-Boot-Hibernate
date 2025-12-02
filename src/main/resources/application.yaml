@@ -2,4 +2,4 @@ spring:
   application:
     name: testapp
 coach:
-  name: Brandon
+  name: BrandonTest
