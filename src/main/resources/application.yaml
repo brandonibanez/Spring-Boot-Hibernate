@@ -2,4 +2,18 @@ spring:
   application:
     name: testapp
 coach:
-  name: BrandonTest
+  name: Brandon
+info:
+  app:
+    name: "Spring Boot Demo Application"
+    description: "This is a Spring Boot application demo"
+    version: "1.0.0"
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+  info:
+    env:
+      enabled: true
