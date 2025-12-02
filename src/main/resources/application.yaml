@@ -1,6 +1,10 @@
 spring:
   application:
     name: testapp
+  security:
+    user:
+      name: root
+      password: root
 coach:
   name: Brandon
 info:
@@ -13,7 +17,7 @@ management:
     web:
       exposure:
         include:
-        - '*'
+          - "*"
   info:
     env:
       enabled: true
