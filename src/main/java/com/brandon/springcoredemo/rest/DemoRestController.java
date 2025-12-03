@@ -1,9 +1,10 @@
-package com.brandon.springcoredemo;
+package com.brandon.springcoredemo.rest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.brandon.util.Coach;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController

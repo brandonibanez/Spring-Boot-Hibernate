@@ -1,4 +1,4 @@
-package com.brandon.springcoredemo;
+package com.brandon.util;
 
 import org.springframework.stereotype.Component;
 
