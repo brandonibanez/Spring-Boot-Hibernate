@@ -19,7 +19,7 @@ public class DemoRestController {
     // }
 
     @Autowired
-    public void setCoach(@Qualifier("soccerCoach") Coach theCoach) {
+    public void setCoach(Coach theCoach) {
         mCoach = theCoach;
     }
 
