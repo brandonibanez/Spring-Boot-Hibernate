@@ -1,13 +1,13 @@
-package com.brandon.springboot.demo.testapp;
+package com.brandon.springcoredemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestappApplication {
+public class SpringcoredemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestappApplication.class, args);
-		System.out.println("Test");
+		SpringApplication.run(SpringcoredemoApplication.class, args);
 	}
+
 }
