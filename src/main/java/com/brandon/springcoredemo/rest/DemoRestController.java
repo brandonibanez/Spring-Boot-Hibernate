@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brandon.util.Coach;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -18,7 +19,7 @@ public class DemoRestController {
     // }
 
     @Autowired
-    public void setCoach(Coach theCoach) {
+    public void setCoach(@Qualifier("soccerCoach") Coach theCoach) {
         mCoach = theCoach;
     }
 
