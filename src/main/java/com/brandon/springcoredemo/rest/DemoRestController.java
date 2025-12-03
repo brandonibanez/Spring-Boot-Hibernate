@@ -4,15 +4,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brandon.util.Coach;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
 public class DemoRestController {
 
-    private final Coach mCoach;
+    private Coach mCoach;
 
-    public DemoRestController(Coach theCoach) {
+    // public DemoRestController(Coach theCoach) {
+    //     mCoach = theCoach;
+    // }
+
+    @Autowired
+    public void setCoach(Coach theCoach) {
         mCoach = theCoach;
     }
 
