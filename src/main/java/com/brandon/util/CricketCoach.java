@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 @Component
 @Primary
 @Scope("prototype")
@@ -16,6 +19,16 @@ public class CricketCoach implements Coach {
 
     public CricketCoach() {
         System.out.println(">> CricketCoach: inside default constructor");
+    }
+
+    @PostConstruct
+    public void doMyStartupStuff() {
+        System.out.println(">> CricketCoach: inside of doMyStartupStuff()");
+    }
+
+    @PreDestroy
+    public void doMyCleanupStuff() {
+        System.out.println(">> CricketCoach: inside of doMyCleanupStuff()");
     }
 
 }
