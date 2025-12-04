@@ -7,9 +7,6 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-@Component
-@Primary
-@Scope("prototype")
 public class CricketCoach implements Coach {
 
     @Override
