@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DemoRestController {
 
     private Coach mCoach;
+    private Coach mAnotherCoach;
 
     // public DemoRestController(Coach theCoach) {
     //     mCoach = theCoach;
     // }
 
     @Autowired
-    public void setCoach(Coach theCoach) {
+    public void setCoach(Coach theCoach, Coach anotherCoach) {
         mCoach = theCoach;
+        System.out.println("Comparing beans: " + (theCoach == anotherCoach));
     }
 
     @GetMapping("/test")
