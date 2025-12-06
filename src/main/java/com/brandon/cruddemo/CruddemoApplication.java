@@ -18,13 +18,12 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			// createStudent(studentDAO);
+			createStudent(studentDAO);
 			// Student theStudent = studentDAO.findById(1);
 			// Student stud = studentDAO.findById(1);
 			// stud.setEmail("thisEmailHasBeenUpdated@test.com");
 			// studentDAO.update(stud);
 			// System.out.println(studentDAO.findById(1));
-			System.out.println(studentDAO.delete(2));
 		};
 	}
 
