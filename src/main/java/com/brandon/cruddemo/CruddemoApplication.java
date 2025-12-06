@@ -20,7 +20,10 @@ public class CruddemoApplication {
 		return runner -> {
 			// createStudent(studentDAO);
 			// Student theStudent = studentDAO.findById(1);
-			System.out.println(studentDAO.findByLastName("Browns"));
+			Student stud = studentDAO.findById(1);
+			stud.setEmail("thisEmailHasBeenUpdated@test.com");
+			studentDAO.update(stud);
+			System.out.println(studentDAO.findById(1));
 		};
 	}
 
