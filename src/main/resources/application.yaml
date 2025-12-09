@@ -1,16 +1,3 @@
 spring:
   application:
-    name: cruddemo
-  datasource:
-    url: jdbc:mysql://localhost:3306/student_tracker
-    username: springstudent
-    password: springstudent
-  main:
-    banner-mode: "off"
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-logging:
-  level:
-    root: warn
+    name: restdemo

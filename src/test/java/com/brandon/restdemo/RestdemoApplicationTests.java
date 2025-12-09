@@ -1,10 +1,10 @@
-package com.brandon.cruddemo;
+package com.brandon.restdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CruddemoApplicationTests {
+class RestdemoApplicationTests {
 
 	@Test
 	void contextLoads() {
