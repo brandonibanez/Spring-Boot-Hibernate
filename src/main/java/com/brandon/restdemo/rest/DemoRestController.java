@@ -10,6 +10,9 @@ import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,8 +44,24 @@ public class DemoRestController {
 
     @GetMapping("/students/{index}")
     public Student getStudent(@PathVariable int index) {
+
+        if (index < 0 || index >= theStudents.size()) {
+            throw new StudentNotFoundException("Student index not found - " + index);
+        }
+
         return theStudents.get(index);
     }
-    
+
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exc) {
+
+        StudentErrorResponse error = new StudentErrorResponse();
+
+        error.setStatus(404);
+        error.setMessage(exc.getMessage());
+        error.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 
 }
