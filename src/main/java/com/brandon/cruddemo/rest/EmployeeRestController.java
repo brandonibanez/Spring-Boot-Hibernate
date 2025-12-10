@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brandon.cruddemo.entity.Employee;
 import com.brandon.cruddemo.service.EmployeeService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 public class EmployeeRestController {
@@ -27,5 +30,12 @@ public class EmployeeRestController {
     public Employee getEmployee(@PathVariable int id) {
         return employeeService.findById(id);
     }
+
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee employee) {
+        employee.setId(0);
+        return employeeService.save(employee);
+    }
+    
 
 }
