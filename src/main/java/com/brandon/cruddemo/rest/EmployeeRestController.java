@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -88,6 +89,20 @@ public class EmployeeRestController {
         employeeNode.setAll(patchNode);
 
         return jsonMapper.convertValue(employeeNode, Employee.class);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public String deleteEmployee(@PathVariable int id) {
+        Employee tempEmployee = employeeService.findById(id);
+
+        // throw exception if null
+        if (tempEmployee == null) {
+            throw new RuntimeException("Employee id not found - " + id);
+        }
+
+        employeeService.deleteById(id);
+
+        return "Deleted employee id - " + id;
     }
 
 }
