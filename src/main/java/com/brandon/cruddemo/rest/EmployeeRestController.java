@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brandon.cruddemo.entity.Employee;
 import com.brandon.cruddemo.service.EmployeeService;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -35,6 +36,12 @@ public class EmployeeRestController {
     public Employee addEmployee(@RequestBody Employee employee) {
         employee.setId(0);
         return employeeService.save(employee);
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        Employee theEmployee = employeeService.save(employee);
+        return theEmployee;
     }
     
 
