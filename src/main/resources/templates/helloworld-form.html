@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <form th:action="@{/processForm}" method="GET">
+    <form th:action="@{/processForm}" th:object="${student}" method="POST">
         
-        <input type="text" name="userName" placeholder="Enter your name" required>
+        <!-- <input type="text" name="userName" placeholder="Enter your name" required th:value="${student.firstName + ' ' + student.lastName}"/> -->
+
+        <input type="text" th:field="*{firstName}" placeholder="First Name" required/>
+
+        <input type="text" th:field="*{lastName}" placeholder="Last Name" required/>
+
         <button type="submit">Submit</button>
 
     </form>
