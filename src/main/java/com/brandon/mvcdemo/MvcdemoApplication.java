@@ -1,13 +1,13 @@
-package com.brandon.cruddemo;
+package com.brandon.mvcdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CruddemoApplication {
+public class MvcdemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CruddemoApplication.class, args);
+		SpringApplication.run(MvcdemoApplication.class, args);
 	}
 
 }
