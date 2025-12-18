@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,9 +26,9 @@ public class DemoController {
     }
 
     @RequestMapping("/processForm")
-    public String processForm(HttpServletRequest request, Model model) {
+    public String processForm(@RequestParam("userName") String userName, Model model) {
 
-        String userName = request.getParameter("userName");
+        // String userName = request.getParameter("userName");
         userName = userName.toUpperCase();
         model.addAttribute("message", userName);
 
