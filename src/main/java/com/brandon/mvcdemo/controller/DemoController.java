@@ -8,17 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DemoController {
 
-    @GetMapping("/hello")
-    public String sayHello(Model model) {
+    // @GetMapping("/hello")
+    // public String sayHello(Model model) {
         
-        model.addAttribute("date", java.time.LocalDateTime.now());
-        return "helloworld";
+    //     model.addAttribute("date", java.time.LocalDateTime.now());
+    //     return "helloworld";
 
-    }
+    // }
 
     @RequestMapping("/showForm")
     public String showForm() {
         return "helloworld-form";
+    }
+
+    @RequestMapping("/processForm")
+    public String processForm() {
+        return "helloworld";
     }
 
     
