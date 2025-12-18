@@ -5,6 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 public class DemoController {
 
@@ -22,7 +25,12 @@ public class DemoController {
     }
 
     @RequestMapping("/processForm")
-    public String processForm() {
+    public String processForm(HttpServletRequest request, Model model) {
+
+        String userName = request.getParameter("userName");
+        userName = userName.toUpperCase();
+        model.addAttribute("message", userName);
+
         return "helloworld";
     }
 
