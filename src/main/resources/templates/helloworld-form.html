@@ -15,6 +15,13 @@
 
         <input type="text" th:field="*{lastName}" placeholder="Last Name" required/>
 
+    <select th:field="*{country}" required>
+        <option value="" disabled selected>Select your country</option>
+        <option th:each="country : ${countryOptions}" 
+            th:value="${country}" 
+            th:text="${country}">
+        </option>
+    </select>
         <button type="submit">Submit</button>
 
     </form>

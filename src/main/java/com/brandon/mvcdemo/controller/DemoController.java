@@ -20,9 +20,9 @@ public class DemoController {
 
     // @GetMapping("/hello")
     // public String sayHello(Model model) {
-        
-    //     model.addAttribute("date", java.time.LocalDateTime.now());
-    //     return "helloworld";
+
+    // model.addAttribute("date", java.time.LocalDateTime.now());
+    // return "helloworld";
 
     // }
 
@@ -32,19 +32,26 @@ public class DemoController {
         Student student = new Student();
         student.setFirstName("John");
         student.setLastName("Doe");
+        // default to no country selected so the placeholder option (value="") is
+        // selected
+        student.setCountry("");
         model.addAttribute("student", student);
+
+        String[] countryOptions = { "United States", "Canada", "Mexico", "United Kingdom", "Germany" };
+        model.addAttribute("countryOptions", countryOptions);
 
         return "helloworld-form";
     }
 
     // @RequestMapping("/processForm")
-    // public String processForm(@RequestParam("userName") String userName, Model model) {
+    // public String processForm(@RequestParam("userName") String userName, Model
+    // model) {
 
-    //     // String userName = request.getParameter("userName");
-    //     userName = userName.toUpperCase();
-    //     model.addAttribute("message", userName);
+    // // String userName = request.getParameter("userName");
+    // userName = userName.toUpperCase();
+    // model.addAttribute("message", userName);
 
-    //     return "helloworld";
+    // return "helloworld";
     // }
 
     @PostMapping("/processForm")
@@ -53,7 +60,5 @@ public class DemoController {
         System.out.println(student.getFirstName());
         return "helloworld-confirmation";
     }
-
-    
 
 }
