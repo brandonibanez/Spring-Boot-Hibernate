@@ -1,10 +1,10 @@
-package com.brandon.mvcdemo;
+package com.brandon;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MvcdemoApplicationTests {
+class MvcvalidationdemoApplicationTests {
 
 	@Test
 	void contextLoads() {

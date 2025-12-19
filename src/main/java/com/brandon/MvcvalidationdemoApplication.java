@@ -1,13 +1,13 @@
-package com.brandon.mvcdemo;
+package com.brandon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MvcdemoApplication {
+public class MvcvalidationdemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MvcdemoApplication.class, args);
+		SpringApplication.run(MvcvalidationdemoApplication.class, args);
 	}
 
 }
