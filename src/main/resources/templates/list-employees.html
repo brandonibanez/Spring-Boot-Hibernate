@@ -68,7 +68,7 @@
                 <td th:text="${employee.email}"></td>
                 <td>
                     <a th:href="@{/employees/showFormForEdit(employeeId=${employee.id})}" class="btn btn-edit">Edit</a>
-                    <a th:href="@{/employees/delete/(id=${employee.id})}" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a th:href="@{/employees/delete(id=${employee.id})}" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</a>
                 </td>
             </tr>
         </tbody>
