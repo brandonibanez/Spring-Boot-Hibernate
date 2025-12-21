@@ -47,6 +47,15 @@ public class EmployeeController {
         return "employee-form";
     }
 
+    @GetMapping("/showFormForEdit")
+    public String showFormForEdit(@RequestParam("employeeId") int theId, Model model) {
+        Employee employee = employeeService.findById(theId);
+
+        model.addAttribute("employee", employee);
+
+        return "employee-form";
+    }
+
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
         
@@ -54,6 +63,8 @@ public class EmployeeController {
 
         return "redirect:/employees/list";
     }
+
+
     
     
 
