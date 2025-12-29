@@ -5,6 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.brandon.cruddemo.dao.AppDAO;
+import com.brandon.cruddemo.entity.Instructor;
+import com.brandon.cruddemo.entity.InstructorDetail;
+
 @SpringBootApplication
 public class CruddemoApplication {
 
@@ -13,10 +17,28 @@ public class CruddemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args) {
+	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
-			System.out.println("Hello from CommandLineRunner");
+			createInstructor(appDAO);
 		};
 	}
 
+	private void createInstructor(AppDAO appDAO) {
+
+		Instructor tempInstructor =
+				new Instructor("Chad", "Darby", "chad.darby@luv2code.com");
+		InstructorDetail tempInstructorDetail =
+				new InstructorDetail(
+						"http://www.luv2code.com/youtube",
+						"Luv 2 code!!!");
+
+		// associate the objects
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		// save the instructor
+		System.out.println("Saving instructor: " + tempInstructor);
+		appDAO.save(tempInstructor);
+		System.out.println("Saved instructor: " + tempInstructor);
+
+	}
 }
