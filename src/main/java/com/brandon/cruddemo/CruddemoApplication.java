@@ -19,8 +19,9 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 		return runner -> {
-			createInstructor(appDAO);
-			findInstructor(appDAO);
+			// createInstructor(appDAO);
+			// findInstructor(appDAO);
+			deleteInstructor(appDAO);
 		};
 	}
 
@@ -50,6 +51,15 @@ public class CruddemoApplication {
 		Instructor tempInstructor = appDAO.findInstructorById(theId);
 
 		System.out.println("Found instructor: " + tempInstructor);
+	}
+
+	private void deleteInstructor(AppDAO appDAO) {
+		int theId = 1;
+		System.out.println("Deleting instructor id: " + theId);
+
+		appDAO.deleteInstructorById(theId);
+
+		System.out.println("Deleted instructor id: " + theId);
 	}
 
 }
