@@ -29,7 +29,8 @@ public class CruddemoApplication {
 			// findInstructorWithCourses(appDAO);
 			// findCoursesForInstructor(appDAO);
 			// findInstructorWithCoursesJoinFetch(appDAO);
-			updateInstructor(appDAO);
+			// updateInstructor(appDAO);
+			updateCourse(appDAO);
 		};
 	}
 
@@ -157,5 +158,21 @@ public class CruddemoApplication {
 	
 		System.out.println("Updated instructor: " + tempInstructor);
 	}
+
+	private void updateCourse(AppDAO appDAO) {
+		int theId = 10;
+		System.out.println("Finding course id: " + theId);
+
+		Course tempCourse = appDAO.findCourseById(theId);
+
+		System.out.println("Found course: " + tempCourse);
+
+		System.out.println("Updating course title...");
+		tempCourse.setTitle("Updated Course Title");
+
+		appDAO.update(tempCourse);
 	
+		System.out.println("Updated course: " + tempCourse);
+	}
+
 }
