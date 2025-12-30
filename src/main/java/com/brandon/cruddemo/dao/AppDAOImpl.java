@@ -1,8 +1,11 @@
 package com.brandon.cruddemo.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.brandon.cruddemo.entity.Course;
 import com.brandon.cruddemo.entity.Instructor;
 import com.brandon.cruddemo.entity.InstructorDetail;
 
@@ -54,6 +57,13 @@ public class AppDAOImpl implements AppDAO {
             }
             entityManager.remove(tempInstructorDetail);
         }
+    }
+
+    @Override
+    public List<Course> findCoursesByInstructorId(int theId) {
+        return entityManager.createQuery("SELECT c FROM Course c WHERE c.instructor.id = :instructorId", Course.class)
+                .setParameter("instructorId", theId)
+                .getResultList();
     }
 
 }
