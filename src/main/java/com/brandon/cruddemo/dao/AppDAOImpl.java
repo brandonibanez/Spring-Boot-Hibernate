@@ -74,4 +74,10 @@ public class AppDAOImpl implements AppDAO {
                 .getSingleResult();
     }
 
+    @Override
+    @Transactional
+    public void update(Instructor theInstructor) {
+        entityManager.merge(theInstructor);
+    }
+
 }

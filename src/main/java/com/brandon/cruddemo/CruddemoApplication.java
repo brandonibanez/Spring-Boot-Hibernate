@@ -28,7 +28,8 @@ public class CruddemoApplication {
 			// createInstructorWithCourses(appDAO);
 			// findInstructorWithCourses(appDAO);
 			// findCoursesForInstructor(appDAO);
-			findInstructorWithCoursesJoinFetch(appDAO);
+			// findInstructorWithCoursesJoinFetch(appDAO);
+			updateInstructor(appDAO);
 		};
 	}
 
@@ -139,6 +140,22 @@ public class CruddemoApplication {
 		System.out.println("Found instructor: " + tempInstructor);
 
 		System.out.println("Courses: " + tempInstructor.getCourses());
-	}	
+	}
 
+	private void updateInstructor(AppDAO appDAO) {
+		int theId = 1;
+		System.out.println("Finding instructor id: " + theId);
+
+		Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+		System.out.println("Found instructor: " + tempInstructor);
+
+		System.out.println("Updating instructor's email...");
+		tempInstructor.setEmail("updated.email@luv2code.com");
+
+		appDAO.update(tempInstructor);
+	
+		System.out.println("Updated instructor: " + tempInstructor);
+	}
+	
 }
