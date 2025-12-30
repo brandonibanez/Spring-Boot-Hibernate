@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.brandon.cruddemo.dao.AppDAO;
+import com.brandon.cruddemo.entity.Course;
 import com.brandon.cruddemo.entity.Instructor;
 import com.brandon.cruddemo.entity.InstructorDetail;
 
@@ -23,7 +24,8 @@ public class CruddemoApplication {
 			// findInstructor(appDAO);
 			// deleteInstructor(appDAO);
 			// findInstructorDetail(appDAO);
-			deleteInstructorDetail(appDAO);
+			// deleteInstructorDetail(appDAO);
+			createInstructorWithCourses(appDAO);
 		};
 	}
 
@@ -84,4 +86,26 @@ public class CruddemoApplication {
 		System.out.println("Deleted instructor detail id: " + theId);
 	}
 
+	private void createInstructorWithCourses(AppDAO appDAO) {
+
+		Instructor tempInstructor =
+				new Instructor("Madhu", "Patel", "madhu.patel@luv2code.com");
+		InstructorDetail tempInstructorDetail =
+		new InstructorDetail(
+				"http://www.luv2code.com/youtube",
+				"Luv 2 code!!!");
+
+		// associate the objects
+		tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+		Course tempCourse1 = new Course("Java Programming");
+		Course tempCourse2 = new Course("Web Development");
+
+		tempInstructor.addCourse(tempCourse1);
+		tempInstructor.addCourse(tempCourse2);
+
+		System.out.println("Saving instructor: " + tempInstructor);
+		appDAO.save(tempInstructor);
+		System.out.println("Saved instructor: " + tempInstructor);
+	}
 }
