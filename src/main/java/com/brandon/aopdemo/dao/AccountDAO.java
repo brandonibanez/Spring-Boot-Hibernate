@@ -5,4 +5,6 @@ public interface AccountDAO {
 
     void addAccount();
 
+    void addAccounting();
+
 }

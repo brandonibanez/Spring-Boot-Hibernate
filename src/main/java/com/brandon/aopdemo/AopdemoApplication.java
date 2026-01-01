@@ -24,6 +24,7 @@ public class AopdemoApplication {
 	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
 		System.out.println("\nMain Program: demoTheBeforeAdvice");
 		accountDAO.addAccount();
+		accountDAO.addAccounting();
 	}
 
 }
