@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 public class SecondDAOImpl implements SecondDAO {
 
     @Override
-    public void addAccount() {
+    public boolean addAccount() {
         System.out.println(getClass() + ": Doing my DB work: Adding an account from SecondDAO");
+        return true;
     }
 
 }
