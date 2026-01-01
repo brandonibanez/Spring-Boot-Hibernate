@@ -1,10 +1,10 @@
-package com.brandon.cruddemo;
+package com.brandon.aopdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CruddemoApplicationTests {
+class AopdemoApplicationTests {
 
 	@Test
 	void contextLoads() {
