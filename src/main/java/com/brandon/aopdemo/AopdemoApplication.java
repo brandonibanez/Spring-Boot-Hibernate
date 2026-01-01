@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.brandon.aopdemo.dao.AccountDAO;
+import com.brandon.aopdemo.dao.SecondDAO;
 
 @SpringBootApplication
 public class AopdemoApplication {
@@ -15,16 +16,16 @@ public class AopdemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, SecondDAO secondDAO) {
 		return args -> {
-			demoTheBeforeAdvice(accountDAO);
+			demoTheBeforeAdvice(accountDAO, secondDAO);
 		};
 	}
 
-	private void demoTheBeforeAdvice(AccountDAO accountDAO) {
+	private void demoTheBeforeAdvice(AccountDAO accountDAO, SecondDAO secondDAO) {
 		System.out.println("\nMain Program: demoTheBeforeAdvice");
 		accountDAO.addAccount();
-		accountDAO.addAccounting();
+		secondDAO.addAccount();
 	}
 
 }
