@@ -1,9 +1,11 @@
 package com.brandon.aopdemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -48,6 +50,21 @@ public class LoggingAspectTime {
     @After("com.brandon.aopdemo.aspect.AopExpresions.daoPackageNoGetterSetter()")
     public void afterFinallyAddAccount(JoinPoint theJoinPoint) {
         System.out.println("\n=====>>> Executing @After (finally) advice on addAccount()" + theJoinPoint.getSignature().toShortString());
+    }
+
+    @Around("com.brandon.aopdemo.aspect.AopExpresions.getter()")
+    public void aroundGetters(ProceedingJoinPoint theJoinPoint) {
+        System.out.println("\n=====>>> Executing @Around advice on getters");
+        System.out.println("Method: " + theJoinPoint.getSignature().toShortString());
+        long begin = System.currentTimeMillis();
+        try {
+            theJoinPoint.proceed();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+
+        long end = System.currentTimeMillis();
+        System.out.println("\n=====>>> Duration: " + (end - begin) / 1000.0 + " seconds");
     }
 
 }

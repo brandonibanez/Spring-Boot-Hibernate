@@ -1,5 +1,8 @@
 package com.brandon.aopdemo.dao;
 
+import java.sql.Time;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -33,6 +36,12 @@ public class AccountDAOImpl implements AccountDAO {
     @Override
     public String getName() {
         System.out.println(getClass() + ": Getting account name");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return this.name;
     }
 
