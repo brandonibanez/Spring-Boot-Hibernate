@@ -7,7 +7,7 @@ public interface AccountDAO {
 
     void addAccounting(String str);
 
-    void setName(String name);
+    String setName(String name);
 
     void getName();
 

@@ -16,8 +16,9 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void setName(String name) {
+    public String setName(String name) {
         System.out.println(getClass() + ": Setting account name to " + name);
+        return name;
     }
 
     @Override

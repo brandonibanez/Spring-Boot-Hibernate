@@ -1,6 +1,7 @@
 package com.brandon.aopdemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -21,7 +22,15 @@ public class LoggingAspectTime {
         for (Object tempArg : theJoinPoint.getArgs()) {
             System.out.println("Argument: " + tempArg);
         }
+    }
 
+    @AfterReturning(
+            pointcut = "com.brandon.aopdemo.aspect.AopExpresions.setter()",
+            returning = "result"
+    )
+    public void afterReturningSetName(JoinPoint theJoinPoint, Object result) {
+        System.out.println("\n=====>>> Executing @AfterReturning advice on setName()");
+        System.out.println("Result: " + result);
     }
 
 }
