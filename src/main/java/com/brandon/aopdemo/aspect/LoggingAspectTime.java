@@ -10,14 +10,18 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @Order(2)
-public class LoggingAspectTime{
+public class LoggingAspectTime {
 
     @Before("com.brandon.aopdemo.aspect.AopExpresions.daoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {
         System.out.println("\n=====>>> Executing @Before advice on addAccount()");
 
         System.out.println("Method: " + theJoinPoint.getSignature());
-        
+
+        for (Object tempArg : theJoinPoint.getArgs()) {
+            System.out.println("Argument: " + tempArg);
+        }
+
     }
 
 }
