@@ -1,5 +1,6 @@
 package com.brandon.aopdemo.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -12,8 +13,11 @@ import org.springframework.stereotype.Component;
 public class LoggingAspectTime{
 
     @Before("com.brandon.aopdemo.aspect.AopExpresions.daoPackageNoGetterSetter()")
-    public void beforeAddAccountAdvice() {
+    public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {
         System.out.println("\n=====>>> Executing @Before advice on addAccount()");
+
+        System.out.println("Method: " + theJoinPoint.getSignature());
+        
     }
 
 }
