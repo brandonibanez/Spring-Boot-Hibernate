@@ -28,7 +28,7 @@ public class AopdemoApplication {
 		accountDAO.addAccounting("wew");
 		secondDAO.addAccount();
 		accountDAO.setName("Brandon");
-		// accountDAO.setNameException("TestException");
+		System.out.println(accountDAO.setNameException("TestException"));
 		System.out.println(accountDAO.getName());
 	}
 

@@ -12,6 +12,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import com.brandon.aopdemo.dao.AccountDAO;
+
 @Aspect
 @Component
 @Order(2)
@@ -38,33 +40,42 @@ public class LoggingAspectTime {
         System.out.println("Result: " + result);
     }
 
-    @AfterThrowing(
-            pointcut = "com.brandon.aopdemo.aspect.AopExpresions.setter()",
-            throwing = "theExc"
-    )
-    public void afterThrowingSetName(JoinPoint theJoinPoint, RuntimeException theExc) {
-        System.out.println("\n=====>>> Executing @AfterThrowing advice on setName()");
-        System.out.println("Exception: " + theExc);
-    }
+    // @AfterThrowing(
+    //         pointcut = "com.brandon.aopdemo.aspect.AopExpresions.setter()",
+    //         throwing = "theExc"
+    // )
+    // public void afterThrowingSetName(JoinPoint theJoinPoint, RuntimeException theExc) {
+    //     System.out.println("\n=====>>> Executing @AfterThrowing advice on setName()");
+    //     System.out.println("Exception: " + theExc);
+    // }
 
-    @After("com.brandon.aopdemo.aspect.AopExpresions.daoPackageNoGetterSetter()")
-    public void afterFinallyAddAccount(JoinPoint theJoinPoint) {
-        System.out.println("\n=====>>> Executing @After (finally) advice on addAccount()" + theJoinPoint.getSignature().toShortString());
+    // @After("com.brandon.aopdemo.aspect.AopExpresions.daoPackageNoGetterSetter()")
+    // public void afterFinallyAddAccount(JoinPoint theJoinPoint) {
+    //     System.out.println("\n=====>>> Executing @After (finally) advice on addAccount()" + theJoinPoint.getSignature().toShortString());
+    // }
+
+    @Around("com.brandon.aopdemo.aspect.AopExpresions.setter()")
+    public Object afterFinallyAddAccount(ProceedingJoinPoint theJoinPoint) throws Throwable {
+        System.out.println("\n=====>>> Executing @Around advice on setName()" + theJoinPoint.getSignature().toShortString());
+        Object result = null;
+        try {
+            result = theJoinPoint.proceed();
+        } catch (Throwable e) {
+            // e.printStackTrace();
+            result = "Major Exception handled and returned value instead!";
+        }
+        return result;
     }
 
     @Around("com.brandon.aopdemo.aspect.AopExpresions.getter()")
-    public void aroundGetters(ProceedingJoinPoint theJoinPoint) {
+    public Object aroundGetters(ProceedingJoinPoint theJoinPoint) throws Throwable {
         System.out.println("\n=====>>> Executing @Around advice on getters");
         System.out.println("Method: " + theJoinPoint.getSignature().toShortString());
         long begin = System.currentTimeMillis();
-        try {
-            theJoinPoint.proceed();
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
-
+        Object result = theJoinPoint.proceed();
         long end = System.currentTimeMillis();
         System.out.println("\n=====>>> Duration: " + (end - begin) / 1000.0 + " seconds");
+        return result;
     }
 
 }

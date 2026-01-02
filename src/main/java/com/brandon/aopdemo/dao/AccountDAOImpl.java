@@ -31,6 +31,7 @@ public class AccountDAOImpl implements AccountDAO {
     public String setNameException(String name) {
         System.out.println(getClass() + ": Setting account name to " + name);
         throw new RuntimeException("Just throwing an exception from setNameException");
+        // return this.name;
     }
 
     @Override
