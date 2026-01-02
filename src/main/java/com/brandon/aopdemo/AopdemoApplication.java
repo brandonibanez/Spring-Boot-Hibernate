@@ -28,7 +28,7 @@ public class AopdemoApplication {
 		accountDAO.addAccounting("wew");
 		secondDAO.addAccount();
 		accountDAO.setName("Brandon");
-		accountDAO.getName();
+		System.out.println(accountDAO.getName());
 	}
 
 }

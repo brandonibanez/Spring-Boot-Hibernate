@@ -28,8 +28,9 @@ public class LoggingAspectTime {
             pointcut = "com.brandon.aopdemo.aspect.AopExpresions.setter()",
             returning = "result"
     )
-    public void afterReturningSetName(JoinPoint theJoinPoint, Object result) {
+    public void afterReturningSetName(JoinPoint theJoinPoint, String result) {
         System.out.println("\n=====>>> Executing @AfterReturning advice on setName()");
+        result = result.toUpperCase();
         System.out.println("Result: " + result);
     }
 

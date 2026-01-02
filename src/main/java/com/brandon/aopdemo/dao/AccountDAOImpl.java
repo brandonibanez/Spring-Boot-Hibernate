@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AccountDAOImpl implements AccountDAO {
 
+    private String name;
+
     @Override
     public void addAccount() {
         System.out.println(getClass() + ": Doing my DB work: Adding an account");
@@ -18,12 +20,14 @@ public class AccountDAOImpl implements AccountDAO {
     @Override
     public String setName(String name) {
         System.out.println(getClass() + ": Setting account name to " + name);
-        return name;
+        this.name = name;
+        return this.name;
     }
 
     @Override
-    public void getName() {
+    public String getName() {
         System.out.println(getClass() + ": Getting account name");
+        return this.name;
     }
 
 }
