@@ -2,6 +2,7 @@ package com.brandon.aopdemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -32,6 +33,15 @@ public class LoggingAspectTime {
         System.out.println("\n=====>>> Executing @AfterReturning advice on setName()");
         result = result.toUpperCase();
         System.out.println("Result: " + result);
+    }
+
+    @AfterThrowing(
+            pointcut = "com.brandon.aopdemo.aspect.AopExpresions.setter()",
+            throwing = "theExc"
+    )
+    public void afterThrowingSetName(JoinPoint theJoinPoint, RuntimeException theExc) {
+        System.out.println("\n=====>>> Executing @AfterThrowing advice on setName()");
+        System.out.println("Exception: " + theExc);
     }
 
 }

@@ -9,6 +9,8 @@ public interface AccountDAO {
 
     String setName(String name);
 
+    String setNameException(String name);
+
     String getName();
 
 }
