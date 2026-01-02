@@ -1,6 +1,7 @@
 package com.brandon.aopdemo.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -42,6 +43,11 @@ public class LoggingAspectTime {
     public void afterThrowingSetName(JoinPoint theJoinPoint, RuntimeException theExc) {
         System.out.println("\n=====>>> Executing @AfterThrowing advice on setName()");
         System.out.println("Exception: " + theExc);
+    }
+
+    @After("com.brandon.aopdemo.aspect.AopExpresions.daoPackageNoGetterSetter()")
+    public void afterFinallyAddAccount(JoinPoint theJoinPoint) {
+        System.out.println("\n=====>>> Executing @After (finally) advice on addAccount()" + theJoinPoint.getSignature().toShortString());
     }
 
 }
