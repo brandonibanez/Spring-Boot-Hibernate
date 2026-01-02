@@ -12,7 +12,16 @@ public class LoggingAspectTime {
     @Pointcut("execution(* com.brandon.aopdemo.dao.*.*(..))")
     public void daoPackage() {}
 
-    @Before("daoPackage()")
+    @Pointcut("execution(* com.brandon.aopdemo.dao.*.get*(..))")
+    public void getter() {}
+
+    @Pointcut("execution(* com.brandon.aopdemo.dao.*.set*(..))")
+    public void setter() {}
+
+    @Pointcut("daoPackage() && !(getter() || setter())")
+    public void daoPackageNoGetterSetter() {} 
+
+    @Before("daoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice() {
         System.out.println("\n=====>>> Executing @Before advice on addAccount()");
     }

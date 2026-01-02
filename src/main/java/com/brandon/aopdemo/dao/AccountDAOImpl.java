@@ -15,4 +15,14 @@ public class AccountDAOImpl implements AccountDAO {
         System.out.println(getClass() + ": Doing my DB work: Adding accounting");
     }
 
+    @Override
+    public void setName(String name) {
+        System.out.println(getClass() + ": Setting account name to " + name);
+    }
+
+    @Override
+    public void getName() {
+        System.out.println(getClass() + ": Getting account name");
+    }
+
 }
